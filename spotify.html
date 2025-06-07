@@ -47,6 +47,32 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
   </style>
+<script>
+  function kirimPesanan() {
+    const nama = document.getElementById('nama').value;
+    const wa = document.getElementById('whatsapp').value;
+    const paket = document.getElementById('paket').value;
+    const pembayaran = document.getElementById('pembayaran').value;
+    const catatan = document.getElementById('catatan').value;
+
+    if (!nama || !wa || !paket || !pembayaran) {
+      alert("Mohon lengkapi semua data yang wajib diisi!");
+      return;
+    }
+
+    const pesan = `🟢 *Pesanan Baru Spotify Premium!*\n\n` +
+                  `👤 *Nama:* ${nama}\n` +
+                  `📱 *No. WhatsApp:* ${wa}\n` +
+                  `🎶 *Paket:* ${paket}\n` +
+                  `💳 *Pembayaran:* ${pembayaran}\n` +
+                  (catatan ? `📝 *Catatan:* ${catatan}\n` : '') +
+                  `\nMohon segera diproses ya kak 🙏`;
+
+    const nomorTujuan = "+6287717511477"; // Ganti dengan nomor WhatsApp kamu
+    const linkWA = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(pesan)}`;
+    window.open(linkWA, '_blank');
+  }
+</script>
 </head>
 
 <body class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 text-gray-800">
@@ -362,10 +388,11 @@
                     class="w-full px-4 py-3 bg-white border border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"></textarea>
         </div>
         
-        <a href="https://wa.me/6287717511477?text=kak%20mau%20pesan" target="_blank"
-            class="block text-center w-full gradient-bg hover:shadow-2xl text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105">
-            🚀 Pesan via WhatsApp
-        </a>
+        <button type="button" onclick="kirimPesanan()" 
+          class="block text-center w-full gradient-bg hover:shadow-2xl text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105">
+          🚀 Kirim Pesanan via WhatsApp
+        </button>
+
 
         
         <div class="mt-4 text-center text-sm text-gray-500">
